@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 	
+	
+	<mapper namespace="com.springlec.base0802.dao.IDao">
+		<select id="listDao" resultType="com.springlec.base0802.dto.ContentDto"	>
+			SELECT * FROM ADRESS ORDER BY MID ASC
+		</select>
+	
+		<insert id="writeDao">
+			INSERT INTO ADRESS (MNAME, MCONTENT, MADDRESS, MEMAIL, MRELATION) VALUES(#{param1}, #{param2}, #{param3}, #{param4}, #{param5})
+		</insert>
+	
+		<select id="contentDao" resultType="com.springlec.base0802.dto.ContentDto"> 
+			SELECT * FROM ADRESS WHERE MID = #{param1}
+		
+		</select>
+		
+		<delete id = "deleteDao">
+			DELETE FROM ADRESS WHERE MID = #{param1}
+		</delete>
+		
+		
+		<update id="modifyDao">
+			UPDATE ADRESS SET MNAME = #{param1}, MCONTENT = #{param2}, MADDRESS = #{param3}, MEMAIL = #{param4}, MRELATION= #{param5} WHERE MID= #{param6} 
+		
+		</update>
+		
+		<select id="listQuery" parameterType="String" resultType="com.springlec.base0802.dto.ContentDto"> 
+			SELECT * FROM ADRESS WHERE ${param1} LIKE CONCAT('%',#{param2},'%')
+		</select>
+	
+	
+	</mapper>
